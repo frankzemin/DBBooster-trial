@@ -2323,9 +2323,16 @@
                 <section class="intro-section glass-card p-6">
                     <h2>Core Features</h2>
                      <p>Select a module to get started with our powerful data processing capabilities:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-6">
+                    <!-- 
+                      MODIFICATION:
+                      Changed from lg:grid-cols-3 to lg:grid-cols-6.
+                      Added lg:col-span-3 to the first 2 items.
+                      Added lg:col-span-2 to the last 3 items.
+                      This creates a balanced 2x3 grid, removing the blank space.
+                    -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 mt-6">
                         <!-- ... feature cards ... -->
-                         <div class="feature-card">
+                         <div class="feature-card lg:col-span-3">
                             <div class="feature-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
                                 <div class="initial-stress-icon">
                                     <div class="stress-block">
@@ -2349,7 +2356,7 @@
                             <p class="text-gray-300 text-sm md:text-base mb-3 flex-grow">Process stress data (<span class="code-inline">.xlsx</span>/<span class="code-inline">.csv</span>), calculate averages per solid, and generate formatted output.</p>
                             <div class="tech-badge">Upload → Edit → Analyze → Output</div>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card lg:col-span-3">
                             <div class="feature-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
                                 <i class="fas fa-cogs"></i>
                             </div>
@@ -2357,7 +2364,7 @@
                             <p class="text-gray-300 text-sm md:text-base mb-3 flex-grow">Define constitutive model parameters for materials and generate fixed-width output lines.</p>
                             <div class="tech-badge">Input Parameters → Generate Output</div>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card lg:col-span-2">
                             <div class="feature-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
                                 <i class="fas fa-project-diagram"></i>
                             </div>
@@ -2365,7 +2372,7 @@
                             <p class="text-gray-300 text-sm md:text-base mb-3 flex-grow">Parse S2K files, inspect tables, apply substitutions, and build custom output formats.</p>
                             <div class="tech-badge">Load S2K → Parse → Inspect/Edit → Build Format → Output</div>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card lg:col-span-2">
                             <div class="feature-icon" style="background: linear-gradient(135deg, #ff8a00, #e52e71);">
                                 <i class="fas fa-border-all"></i>
                             </div>
@@ -2373,21 +2380,13 @@
                             <p class="text-gray-300 text-sm md:text-base mb-3 flex-grow">Load multiple spreadsheet files, extract columns, and consolidate into a single formatted output.</p>
                             <div class="tech-badge">Upload Files → Consolidate → Format → Output</div>
                         </div>
-                        <div class="feature-card">
+                        <div class="feature-card lg:col-span-2">
                             <div class="feature-icon" style="background: linear-gradient(135deg, #00c6ff, #0072ff);">
                                 <i class="fas fa-wave-square"></i>
                             </div>
                             <h3 class="text-lg md:text-xl font-semibold mb-2">Earthquake Step Setting</h3>
                             <p class="text-gray-300 text-sm md:text-base mb-3 flex-grow">Generate formatted text lines for seismic analysis steps based on a specified step count.</p>
                             <div class="tech-badge">Input Step Count → Generate Output</div>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon" style="background: linear-gradient(135deg, #8a2be2, #5f9ea0);">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h3 class="text-lg md:text-xl font-semibold mb-2">Ru-Acc-Time Diagram</h3>
-                            <p class="text-gray-300 text-sm md:text-base mb-3 flex-grow">Visualize and analyze Ru-Acc-Time relationships for seismic analysis with interactive charts.</p>
-                            <div class="tech-badge">Import Data → Visualize → Analyze → Export</div>
                         </div>
                     </div>
                 </section>
@@ -2473,10 +2472,6 @@
                             <span class="code-inline">Source</span>: Directly from input data.<br>
                             <span class="code-inline">Calculated</span>: Derived using conditional logic.<br>
                             <span class="code-inline">Uniform</span>: Fixed value for all rows.
-                        </div>
-                        <div class="concept-item">
-                            <strong>Ru-Acc-Time</strong>
-                            Relationship between Ru (Utilization Ratio), Acceleration, and Time in seismic analysis.
                         </div>
                     </div>
                 </section>
@@ -2981,6 +2976,208 @@
                 </section>
             </div>
             <!-- END: PHASE 5 (EQUAL DISP BOUNDARY) INTERFACE -->
+            
+            <!-- NEW: PHASE 6 (EARTHQUAKE STEP SETTING) INTERFACE -->
+            <div id="interface-earthquakeStep" class="interface-pane hidden">
+                <!-- Content from Phase 6 file is injected here -->
+                
+                <!-- Background decorative elements -->
+                <div class="fixed inset-0 overflow-hidden pointer-events-none">
+                    <div class="bg-element w-[50rem] h-[50rem] bg-blue-500 top-1/4 left-1/4"></div>
+                    <div class="bg-element w-[60rem] h-[60rem] bg-indigo-500 bottom-1/3 right-1/4"></div>
+                    <div class="bg-element w-[40rem] h-[40rem] bg-teal-500 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                </div>
+
+                <!-- 
+                  NOTE: The original file had max-w-full, h-screen, etc.
+                  These are removed to allow it to fit inside the parent .main-content scrolling area.
+                  The .main-container and .content-area divs are also simplified as the parent
+                  .main-content provides the scrolling.
+                -->
+                <div class="max-w-screen-2xl mx-auto w-full">
+                    <div class="card mb-8">
+                        <div class="header-section">
+                            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+                                <div>
+                                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Earthquake Step Generator</h1>
+                                    <p class="text-blue-300 text-xl md:text-2xl">Generate formatted seismic analysis steps for structural simulations</p>
+                                </div>
+                                <div class="flex items-center gap-4 bg-blue-900/50 px-8 py-4 rounded-2xl">
+                                    <i class="fas fa-wave-square text-blue-400 text-3xl"></i>
+                                    <span class="text-xl font-semibold">Seismic Engineering</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 xl:grid-cols-2 gap-10 flex-grow">
+                            <!-- Input Section -->
+                            <div class="section-spacing">
+                                <div class="bg-blue-900/40 p-7 rounded-3xl border border-blue-800/50 h-full">
+                                    <div class="flex items-center gap-5 mb-7">
+                                        <div class="bg-blue-500/30 p-4 rounded-2xl">
+                                            <i class="fas fa-cog text-blue-400 text-2xl"></i>
+                                        </div>
+                                        <h2 class="text-2xl font-semibold text-white">Configuration</h2>
+                                    </div>
+                                    
+                                    <div class="space-y-7">
+                                        <div class="input-group">
+                                            <label for="earthquake-steps-input" class="block text-lg font-medium text-blue-200 mb-3">
+                                                Number of Steps (N):
+                                            </label>
+                                            <div class="flex flex-col lg:flex-row items-start lg:items-center gap-5">
+                                                <div class="input-container w-full">
+                                                    <div class="input-icon">
+                                                        <i class="fas fa-hashtag"></i>
+                                                    </div>
+                                                    <input type="number" 
+                                                           id="earthquake-steps-input" 
+                                                           min="1" 
+                                                           step="1" 
+                                                           class="config-input input-with-icon w-full" 
+                                                           placeholder="e.g., 10">
+                                                </div>
+                                                <button id="generate-earthquake-steps-btn" 
+                                                        class="btn-primary flex items-center justify-center gap-3">
+                                                    <i class="fas fa-bolt"></i>
+                                                    <span>Generate Steps</span>
+                                                </button>
+                                            </div>
+                                            <p class="mt-3 text-blue-300">
+                                                Enter the number of earthquake analysis steps to generate formatted output lines.
+                                            </p>
+                                        </div>
+                                        
+                                        <div class="pt-6 border-t border-blue-800/50">
+                                            <h3 class="text-xl font-medium text-white mb-4">Output Format</h3>
+                                            <div class="bg-gray-900/70 p-5 rounded-2xl">
+                                                <div class="text-blue-200 mb-3">Example Output:</div>
+                                                <div class="font-mono text-base bg-black/50 p-4 rounded-xl overflow-x-auto">
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;100001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;100002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1<br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;100003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;00003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1
+                                                </div>
+                                                <div class="text-blue-300 mt-3">
+                                                    Format: [4 spaces]1[step][5 spaces][step][14 spaces]1
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Collapsible About Section -->
+                                <div class="about-section mt-6">
+                                    <div class="about-header" id="about-toggle">
+                                        <div class="flex items-center gap-4">
+                                            <div class="bg-indigo-500/30 p-3 rounded-xl">
+                                                <i class="fas fa-info-circle text-indigo-400 text-xl"></i>
+                                            </div>
+                                            <h2 class="text-xl font-semibold text-white">About This Tool</h2>
+                                        </div>
+                                        <i class="fas fa-chevron-down toggle-icon" id="toggle-icon"></i>
+                                    </div>
+                                    <div class="about-content" id="about-content">
+                                        <p>
+                                            This generator creates formatted step definitions for seismic analysis in structural engineering simulations. 
+                                            Each line represents a time step in the earthquake analysis sequence, formatted for compatibility with 
+                                            structural analysis software.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Output Section -->
+                            <div class="section-spacing">
+                                <div class="bg-gray-900/60 p-7 rounded-3xl border border-gray-700/70 h-full flex flex-col output-section">
+                                    <div class="flex items-center justify-between mb-7">
+                                        <div class="flex items-center gap-4">
+                                            <div class="bg-green-500/30 p-4 rounded-2xl">
+                                                <i class="fas fa-file-code text-green-400 text-2xl"></i>
+                                            </div>
+                                            <h2 class="text-2xl font-semibold text-white">Formatted Output</h2>
+                                        </div>
+                                        <div class="flex items-center gap-2 text-base bg-green-900/50 px-4 py-2 rounded-2xl">
+                                            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+                                            <span>Ready</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex-1 flex flex-col">
+                                        <textarea id="earthquake-output" 
+                                                  readonly 
+                                                  class="output-area flex-1 mb-5"
+                                                  placeholder="Click 'Generate Steps' to create formatted earthquake steps..."></textarea>
+                                        
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <button id="copy-earthquake-btn" 
+                                                    class="btn-secondary flex items-center justify-center gap-3">
+                                                <i class="fas fa-copy"></i>
+                                                <span>Copy to Clipboard</span>
+                                            </button>
+                                            <button id="download-earthquake-btn" 
+                                                    class="btn-secondary flex items-center justify-center gap-3">
+                                                <i class="fas fa-download"></i>
+                                                <span>Download as TXT</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                                    <div class="stats-card bg-teal-900/40 p-5 rounded-2xl border border-teal-800/50 hover:bg-teal-900/50 transition-all">
+                                        <div class="text-teal-200 text-sm mb-1">Steps Generated</div>
+                                        <div class="text-2xl font-bold text-white" id="steps-count">0</div>
+                                    </div>
+                                    <div class="stats-card bg-purple-900/40 p-5 rounded-2xl border border-purple-800/50 hover:bg-purple-900/50 transition-all">
+                                        <div class="text-purple-200 text-sm mb-1">Lines Created</div>
+                                        <div class="text-2xl font-bold text-white" id="lines-count">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Compact Information Section -->
+                    <div class="info-section">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <div class="info-icon bg-blue-500/20 text-blue-400">
+                                    <i class="fas fa-microscope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Scientific Precision</h3>
+                                    <p>Precise formatting for accurate seismic analysis</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon bg-green-500/20 text-green-400">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Instant Generation</h3>
+                                    <p>Generate thousands of steps in milliseconds</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon bg-purple-500/20 text-purple-400">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <h3>Secure Processing</h3>
+                                    <p>All processing happens locally in your browser</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Toast Notification (This element is part of Phase 6 but relies on the global #toast) -->
+                <!-- The global #toast element at the end of <body> will be used -->
+
+            </div>
+            <!-- END: PHASE 6 (EARTHQUAKE STEP SETTING) INTERFACE -->
 
         </main>
         
@@ -2991,7 +3188,7 @@
         </footer>
     </div>
     
-    <!-- Toast Notification -->
+    <!-- Global Toast Notification -->
     <div id="toast"></div>
 
     <script>
@@ -3087,8 +3284,17 @@
                 };
             }
 
-            // --- END: PHASE 5 SCRIPT (definitions) ---
-
+            // --- START: PHASE 6 (EARTHQUAKE STEP) SCRIPT ---
+            
+            /**
+             * Creates the initial state object for the Earthquake Step interface.
+             */
+            function createEarthquakeStepState() {
+                return {
+                    stepCount: null,
+                    generatedOutput: null
+                };
+            }
 
             // --- MERGED GLOBAL STATE ---
             let globalState = { 
@@ -3098,7 +3304,7 @@
                     cmParams: createCmParamsState(),
                     modelConfig: createModelConfigState(),
                     equalDisp: createEqualDispState()
-                    // Future phases will be added here
+                    earthquakeStep: createEarthquakeStepState()                  
                 } 
             };
            
@@ -6312,6 +6518,129 @@
 
             // --- END: PHASE 5 SCRIPT ---
 
+            // --- START: PHASE 6 (EARTHQUAKE STEP) SCRIPT ---
+            
+            function initializePhase6() {
+                // Attach Event Listeners
+                document.getElementById('generate-earthquake-steps-btn')?.addEventListener('click', generateEarthquakeSteps);
+                document.getElementById('copy-earthquake-btn')?.addEventListener('click', copyOutput_Earthquake);
+                document.getElementById('download-earthquake-btn')?.addEventListener('click', downloadOutput_Earthquake);
+                document.getElementById('about-toggle')?.addEventListener('click', toggleAboutSection);
+                
+                // Allow Enter key to trigger generation in the input field
+                document.getElementById('earthquake-steps-input')?.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // Prevent form submission if it's in a form
+                        generateEarthquakeSteps();
+                    }
+                });
+            }
+
+            function generateEarthquakeSteps() {
+                const input = document.getElementById('earthquake-steps-input');
+                const output = document.getElementById('earthquake-output');
+                const stepsCount = document.getElementById('steps-count');
+                const linesCount = document.getElementById('lines-count');
+                
+                if (!input || !output) return;
+                
+                const num = parseInt(input.value, 10);
+                
+                if (isNaN(num) || num < 1) {
+                    showToast("Please enter a valid number of steps (minimum 1).", "error");
+                    output.value = "";
+                    if(stepsCount) stepsCount.textContent = "0";
+                    if(linesCount) linesCount.textContent = "0";
+                    return;
+                }
+                
+                // Add earthquake shake effect to the card
+                const card = document.querySelector('#interface-earthquakeStep .card');
+                if (card) {
+                    card.classList.add('earthquake-shake');
+                    setTimeout(() => {
+                        card.classList.remove('earthquake-shake');
+                    }, 700);
+                }
+                
+                // Generate formatted output lines
+                const lines = [];
+                for (let i = 1; i <= num; i++) {
+                    const stepStr = i.toString().padStart(5, '0');
+                    const line = `${" ".repeat(4)}1${stepStr}${" ".repeat(5)}${stepStr}${" ".repeat(14)}1`;
+                    lines.push(line);
+                }
+                
+                output.value = lines.join('\n');
+                if(stepsCount) stepsCount.textContent = num;
+                if(linesCount) linesCount.textContent = num;
+                
+                globalState.interfaces.earthquakeStep.generatedOutput = output.value;
+                globalState.interfaces.earthquakeStep.stepCount = num;
+                
+                showToast(`Generated ${num} earthquake steps successfully!`, "success");
+            }
+            
+            function copyOutput_Earthquake() {
+                const output = document.getElementById('earthquake-output');
+                
+                if (!output || !output.value) {
+                    showToast("Nothing to copy.", "error");
+                    return;
+                }
+                
+                try {
+                    output.select();
+                    output.setSelectionRange(0, output.value.length);
+                    
+                    if (!document.execCommand('copy')) {
+                        throw new Error('execCommand failed');
+                    }
+                    showToast("Copied to clipboard!", "success");
+
+                } catch (err) {
+                    console.error("Copy failed:", err);
+                    showToast("Copy failed. Please try again or copy manually.", "error");
+                }
+            }
+            
+            function downloadOutput_Earthquake() {
+                const output = document.getElementById('earthquake-output');
+                
+                if (!output || !output.value) {
+                    showToast("Nothing to download.", "error");
+                    return;
+                }
+                
+                try {
+                    const blob = new Blob([output.value], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'earthquake_steps.txt';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    showToast("Downloaded successfully!", "success");
+                } catch (err) {
+                    showToast("Download failed. Please try again.", "error");
+                }
+            }
+            
+            // --- Collapsible About Section ---
+            function toggleAboutSection() {
+                const content = document.getElementById('about-content');
+                const icon = document.getElementById('toggle-icon');
+                
+                if(content && icon) {
+                    content.classList.toggle('expanded');
+                    icon.classList.toggle('rotated');
+                }
+            }
+
+            // --- END: PHASE 6 SCRIPT ---
+
 
             // --- START: PHASE 1 (INTRO) SCRIPT ---
             // --- This logic is from the original Phase 1 file ---
@@ -6323,8 +6652,7 @@
                 { id: 'phase3', title: 'CM Parameters', icon: 'fa-cogs' },
                 { id: 'phase4', title: 'Model Config', icon: 'fa-project-diagram' },
                 { id: 'phase5', title: 'Equal Disp', icon: 'fa-border-all' },
-                { id: 'phase6', title: 'Earthquake Step', icon: 'fa-wave-square' },
-                { id: 'phase7', title: 'Ru-Acc-Disp', icon: 'fa-chart-line' }
+                { id: 'phase6', title: 'Earthquake Step', icon: 'fa-wave-square' }
             ];
             let currentActivePhase = 'phase1'; // Default for this page
 
@@ -6592,6 +6920,7 @@
             initializePhase3(); // Initialize the listeners for Phase 3
             initializePhase4(); // Initialize the listeners for Phase 4
             initializePhase5(); // Initialize the listeners for Phase 5
+            initializePhase6(); // Initialize the listeners for Phase 6
             setActivePhase(currentActivePhase); // Run once on load to show the correct initial pane (phase1)
 
         });
